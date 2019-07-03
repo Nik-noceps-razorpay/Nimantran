@@ -21,7 +21,7 @@ class User extends Authenticatable
 
     public function events()
     {
-        return $this->belongsToMany('App\Event');
+        return $this->belongsToMany('App\Event')->withPivot('invite_id');
     }
 
     /**
@@ -42,6 +42,5 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    
 
 }

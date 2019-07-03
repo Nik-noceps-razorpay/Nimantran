@@ -13,12 +13,12 @@ class CreateEventsUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('events_users', function (Blueprint $table) {
-            //
+        Schema::create('events_users', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('users_id');
             $table->integer('events_id');
             $table->integer('invite_id');
+            $table->timestamps();
         });
     }
 
@@ -29,8 +29,6 @@ class CreateEventsUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('events_users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('events_users');
     }
 }
