@@ -18,6 +18,12 @@ class InviteController extends Controller
     public function index()
     {
         //
+        $user = Auth::user();
+
+        $events = $user->events()->wherePivot('response','2')->get();
+//        return $events;
+
+        return view('invite.index',compact('events'));
     }
 
     /**
@@ -81,6 +87,23 @@ class InviteController extends Controller
     public function edit($id)
     {
         //
+
+        $response=request()->RSVP;
+
+//        $event = Event::find($id);
+////        return $event;
+///
+///
+//        return $response;
+
+        $user = Auth::user();
+
+        $user->events()->where('event_id',$id)->update(['response'=>$response]);
+
+//        return $user->events()->where('event_id',$id)->get();
+
+        return redirect('/invite');
+
     }
 
     /**
@@ -93,6 +116,7 @@ class InviteController extends Controller
     public function update(Request $request, $id)
     {
         //
+
     }
 
     /**

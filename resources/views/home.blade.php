@@ -29,7 +29,7 @@
                         </div>
 
                         <div class="callout_actions">
-                            <a class="button button--primary callout__action" href="{{route('invite.create')}}">Pending invites</a>
+                            <a class="button button--primary callout__action" href="{{route('invite.index')}}">Pending invites</a>
                         </div>
 
                 </div>
