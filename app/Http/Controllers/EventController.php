@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Event;
+
 class EventController extends Controller
 {
     /**
@@ -14,6 +16,7 @@ class EventController extends Controller
     public function index()
     {
         //
+
     }
 
     /**
@@ -24,6 +27,7 @@ class EventController extends Controller
     public function create()
     {
         //
+        return view('event.create');
     }
 
     /**
@@ -35,6 +39,15 @@ class EventController extends Controller
     public function store(Request $request)
     {
         //
+        $input = $request->all();
+
+
+        Event::create($input);
+
+        return redirect('/home');
+
+
+
     }
 
     /**

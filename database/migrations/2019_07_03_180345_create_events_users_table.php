@@ -17,7 +17,6 @@ class CreateEventsUsersTable extends Migration
             $table->increments('id');
             $table->integer('users_id');
             $table->integer('events_id');
-            $table->integer('invite_id');
             $table->timestamps();
         });
     }

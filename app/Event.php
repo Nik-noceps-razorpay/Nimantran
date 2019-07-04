@@ -8,7 +8,7 @@ class Event extends Model
 {
     //
     protected $fillable = [
-        'name', 'details', 'location' ,'dateTime'
+        'name', 'details', 'location' ,'datetime'
     ];
 
     public function users()

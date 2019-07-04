@@ -14,7 +14,21 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                        <div class="callout_actions">
+                            <a class="button button--primary callout__action" href="{{route('event.create')}}">Create new Event</a>
+                        </div>
+                        <a class="button button--primary callout__action" href="{{route('event.index')}}">
+                        <span class="event-list-nav__link__text">
+                                View Created Events
+                        </span>
+
+                        </a>
+
+                        <div class="callout_actions">
+                            <a class="button button--primary callout__action" href="{{route('event.index')}}">Invite people to your event</a>
+                        </div>
+
+
                 </div>
             </div>
         </div>
