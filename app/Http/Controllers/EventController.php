@@ -20,8 +20,9 @@ class EventController extends Controller
         $user = Auth::user();
 
         $data = $user->events;
+//        return $data;
 
-        return view('event.index',compact('$data'));
+        return view('event.index',compact('data'));
 
     }
 
