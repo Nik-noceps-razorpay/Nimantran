@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Event;
 use Auth;
+use App\User;
 
-class EventController extends Controller
+class InviteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,13 +18,6 @@ class EventController extends Controller
     public function index()
     {
         //
-        $user = Auth::user();
-
-        $data = $user->events;
-//        return $data;
-
-        return view('event.index',compact('data'));
-
     }
 
     /**
@@ -34,7 +28,12 @@ class EventController extends Controller
     public function create()
     {
         //
-        return view('event.create');
+        $user = Auth::user();
+        $event = $user->events()->get()->all();
+        $event_name= array_column($event,'name','id');
+//        return $event_name;
+
+        return view('invite.create',compact('event_name'));
     }
 
     /**
@@ -46,34 +45,19 @@ class EventController extends Controller
     public function store(Request $request)
     {
         //
-        $input = $request->all();
+//        return $request;
+        $user = User::where('email',$request->email)->get();
 
-        $event = new Event();
-        $event->name = $input['name'];
-        $event->details = $input['details'];
-        $event->location = $input['location'];
-        $event->datetime = $input['datetime'];
-//        return $input;
+        $user = $user[0];
 
+        $event = Event::find($request->event_id);
 
+//        return $event;
 
-        $event->save();
-
-        $user = Auth::user();
-
-
-//        $event->status =1;
-//        $event->response=1;
-
-
-        $user->events()->save($event,['status'=> 1, 'response' => 1]);
-
-
+        $user->events()->save($event,['status' => 0, 'response' => 2]);
 
 
         return redirect('/home');
-
-
 
     }
 
