@@ -13,6 +13,6 @@ class Event extends Model
 
     public function users()
     {
-        return $this->belongsToMany('App\User')->withPivot('invite_id');
+        return $this->belongsToMany('App\User')->withPivot('status','response')->withTimestamps();
     }
 }

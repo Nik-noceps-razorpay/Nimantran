@@ -21,7 +21,7 @@ class User extends Authenticatable
 
     public function events()
     {
-        return $this->belongsToMany('App\Event')->withPivot('invite_id');
+        return $this->belongsToMany('App\Event')->withPivot('status','response')->withTimestamps();
     }
 
     /**

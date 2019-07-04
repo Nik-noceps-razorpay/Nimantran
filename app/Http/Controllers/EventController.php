@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Event;
+use Auth;
 
 class EventController extends Controller
 {
@@ -16,6 +17,11 @@ class EventController extends Controller
     public function index()
     {
         //
+        $user = Auth::user();
+
+        $data = $user->events;
+
+        return view('event.index',compact('$data'));
 
     }
 
@@ -41,8 +47,27 @@ class EventController extends Controller
         //
         $input = $request->all();
 
+        $event = new Event();
+        $event->name = $input['name'];
+        $event->details = $input['details'];
+        $event->location = $input['location'];
+        $event->datetime = $input['datetime'];
+//        return $input;
 
-        Event::create($input);
+
+
+        $event->save();
+
+        $user = Auth::user();
+
+//        $event->status =1;
+//        $event->response=1;
+
+
+        $user->events()->save($event,['status'=> 1, 'response' => 1]);
+
+
+
 
         return redirect('/home');
 
