@@ -97,21 +97,19 @@ class EventController extends Controller
     public function edit($id)
     {
         //
+        $event = Event::find($id);
+
+//        return $id;
+
+        return view('event.edit',compact('event'));
+
+
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -121,4 +119,22 @@ class EventController extends Controller
     {
         //
     }
+
+    public function update(Request $request, $id)
+    {
+        //
+//        return $id;
+
+        $event = Event::find($id);
+//        return $event;
+        //        return $request;
+        $event->update(['name'=>$request->name,'details'=>$request->details,'location'=>$request->location,'datetime'=>$request->datetime]);
+        return redirect('/event');
+    }
 }
+/* @param  int  $id
+* @return \Illuminate\Http\Response
+    */
+
+
+/**/
