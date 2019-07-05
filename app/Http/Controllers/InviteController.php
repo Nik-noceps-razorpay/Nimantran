@@ -76,6 +76,15 @@ class InviteController extends Controller
     public function show($id)
     {
         //
+//        return $id;
+        $event = Event::find($id);
+//        return $event;
+
+        $user = $event->users()->where('status','0')->get();
+
+        return view('invite.show',compact('user'));
+
+
     }
 
     /**

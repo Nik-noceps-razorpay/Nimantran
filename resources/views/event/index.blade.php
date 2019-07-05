@@ -21,6 +21,7 @@
                         <td>{{$d->details}}</td>
                         <td>{{$d->location}}</td>
                         <td>{{$d->datetime}}</td>
+                        <td><button type="button" onclick="window.location.href='/invite/{{$d->id}}'" >View responses</button></td>
                     </tr>
                     @endforeach
                 </table>

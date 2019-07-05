@@ -32,6 +32,11 @@
                             <a class="button button--primary callout__action" href="{{route('invite.index')}}">Pending invites</a>
                         </div>
 
+                        <div class="callout_actions">
+                            <a>To view responses go to view events</a>
+                        </div>
+
+
                 </div>
             </div>
         </div>
